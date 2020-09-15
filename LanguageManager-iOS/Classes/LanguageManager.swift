@@ -255,7 +255,7 @@ fileprivate extension UIView {
       txtf.font = UIFont(name: "fontName".localiz(), size: txtf.font!.pointSize)
     case let lbl as UILabel:
       lbl.text = lbl.text?.localiz()
-        lbl.font = UIFont(name: "fontName".localiz(), size: txtf.font!.pointSize)
+        lbl.font = UIFont(name: "fontName".localiz(), size: lbl.font!.pointSize)
     case let tabbar as UITabBar:
       tabbar.items?.forEach({ $0.title = $0.title?.localiz() })
     case let btn as UIButton:
