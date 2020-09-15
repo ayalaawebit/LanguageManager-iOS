@@ -252,10 +252,10 @@ fileprivate extension UIView {
     case let txtf as UITextField:
       txtf.text = txtf.text?.localiz()
       txtf.placeholder = txtf.placeholder?.localiz()
-      txtf.font = UIFont(name: "fontName".localiz(), size: txtf.font.pointSize)
+      txtf.font = UIFont(name: "fontName".localiz(), size: txtf.font!.pointSize)
     case let lbl as UILabel:
       lbl.text = lbl.text?.localiz()
-        lbl.font = UIFont(name: "fontName".localiz(), size: txtf.font.pointSize)
+        lbl.font = UIFont(name: "fontName".localiz(), size: txtf.font!.pointSize)
     case let tabbar as UITabBar:
       tabbar.items?.forEach({ $0.title = $0.title?.localiz() })
     case let btn as UIButton:
