@@ -248,7 +248,7 @@ fileprivate extension UIView {
   @objc func swizzledAwakeFromNib() {
     swizzledAwakeFromNib()
     
-    let fontName: String = ""
+    var fontName: String = ""
     if self.tag == 0 { // font regular
         fontName = "fontName-regular"
     } else { // font bold
