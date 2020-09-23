@@ -247,25 +247,37 @@ fileprivate extension UIView {
 
   @objc func swizzledAwakeFromNib() {
     swizzledAwakeFromNib()
+    
+    let fontName: String = ""
+    if self.tag == 0 { // font regular
+        fontName = "fontName-regular"
+    } else { // font bold
+        fontName = "fontName-bold"
+    }
 
     switch self {
     case let txtf as UITextField:
-      txtf.text = txtf.text?.localiz()
-      txtf.placeholder = txtf.placeholder?.localiz()
-      txtf.font = UIFont(name: "fontName".localiz(), size: txtf.font!.pointSize)
+        txtf.text = txtf.text?.localiz()
+        txtf.placeholder = txtf.placeholder?.localiz()
+        txtf.font = UIFont(name: fontName.localiz(), size: txtf.font!.pointSize)
     case let lbl as UILabel:
-      lbl.text = lbl.text?.localiz()
-        lbl.font = UIFont(name: "fontName".localiz(), size: lbl.font!.pointSize)
+        lbl.text = lbl.text?.localiz()
+        lbl.font = UIFont(name: fontName.localiz(), size: lbl.font!.pointSize)
     case let tabbar as UITabBar:
-      tabbar.items?.forEach({ $0.title = $0.title?.localiz() })
+        tabbar.items?.forEach({ $0.title = $0.title?.localiz() })
     case let btn as UIButton:
-      btn.setTitle(btn.title(for: .normal)?.localiz(), for: .normal)
+        btn.setTitle(btn.title(for: .normal)?.localiz(), for: .normal)
+        btn.titleLabel?.font = UIFont(name: fontName.localiz(), size: btn.titleLabel!.font!.pointSize)
     case let sgmnt as UISegmentedControl:
-      (0 ..< sgmnt.numberOfSegments).forEach { sgmnt.setTitle(sgmnt.titleForSegment(at: $0)?.localiz(), forSegmentAt: $0) }
+        (0 ..< sgmnt.numberOfSegments).forEach {
+            sgmnt.setTitle(sgmnt.titleForSegment(at: $0)?.localiz(), forSegmentAt: $0)
+            sgmnt.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: fontName.localiz(), size: 14.0)!], for: .normal)
+        }
     case let txtv as UITextView:
-      txtv.text = txtv.text?.localiz()
+        txtv.text = txtv.text?.localiz()
+        txtv.font = UIFont(name: fontName.localiz(), size: txtv.font!.pointSize)
     default:
-      break
+        break
     }
   }
 }
